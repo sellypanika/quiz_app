@@ -1,0 +1,17 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Login Form</h1>
+
+<% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+    <p style="color: red;"><%= errorMessage %></p>
+<% } %>
+
+<form action="/auth/login" method="POST">
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required> <br/><br/>
+
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required><br/><br/>
+
+    <button type="submit">Login</button>
+</form>

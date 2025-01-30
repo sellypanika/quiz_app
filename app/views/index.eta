@@ -1,0 +1,26 @@
+<% layout("./layouts/layout.eta") %>
+
+<header>
+        <nav>
+            <ul>
+                <li><a href="/topics">Topics</a></li>
+                <li><a href="/quiz">Quiz</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<h1>Welcome</h1>
+<h4>This is a quiz App that has questions on different topics.</h4>
+ <section>
+          
+            <ul>
+                <li><a href="/auth/register">Register</a></li>
+                <li><a href="/auth/login">Login</a></li>
+            </ul>
+        </section>
+<h2>Statistics</h2>
+<div>
+    <p><strong>Total Topics:</strong> <%= it.statistics.topicsCount %></p>
+    <p><strong>Total Questions:</strong> <%= it.statistics.questionsCount %></p>
+    <p><strong>Total Answers:</strong> <%= it.statistics.answersCount %></p>
+</div>

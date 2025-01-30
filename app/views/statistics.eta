@@ -1,0 +1,9 @@
+<% layout('./layouts/layout.eta') %>
+
+<h1>Application Statistics</h1>
+
+<div>
+  <p><strong>Total Topics:</strong> <%= it.statistics.topicsCount %></p>
+  <p><strong>Total Questions:</strong> <%= it.statistics.questionsCount %></p>
+  <p><strong>Total Answers:</strong> <%= it.statistics.answersCount %></p>
+</div>

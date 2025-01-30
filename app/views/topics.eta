@@ -1,0 +1,60 @@
+<% layout('./layouts/layout.eta') %>
+
+<h1>Topics</h1>
+
+<h2>Available Topics</h2>
+
+<% if (it.topics && it.topics.length > 0) { %>
+    <ul>
+        <% for (const topic of it.topics) { %>
+            <li>
+                <!-- Topic Name as a link -->
+                <a href="/topics/<%= topic.id %>"><strong><%= topic.name %></strong></a> 
+                (added by: <%= topic.email %>)
+
+                <!-- Always show delete button -->
+                <form method="POST" action="/topics/<%= topic.id %>/delete" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% } %>
+    </ul>
+<% } else { %>
+    <p>No topics added yet.</p>
+<% } %>
+
+<h2>Add a New Topic</h2>
+
+<!-- Display validation errors if they exist -->
+<% if (it.errors && it.errors.length > 0) { %>
+    <ul style="color: red;">
+        <% it.errors.forEach(error => { %>
+            <li><%= error %></li>
+        <% }) %>
+    </ul>
+<% } %>
+
+<!-- Display form with repopulated data if available -->
+<form method="POST" action="/topics">
+    <label for="name"><strong>Topic Name:</strong></label>
+    <input type="text" id="name" name="name" value="<%= it.topicName || '' %>" required>
+    <button type="submit">Add Topic</button>
+</form>
+
+<% if (it.topic && it.questions) { %> <!-- Ensure the topic and questions are passed correctly -->
+    <h1><%= it.topic.name %></h1>
+
+    <% if (it.questions.length > 0) { %>
+        <ul>
+            <% it.questions.forEach(question => { %>
+                <li>
+                    <a href="/topics/<%= it.topic.id %>/questions/<%= question.id %>"><%= question.text %></a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No questions available for this topic.</p>
+    <% } %>
+
+    <a href="/topics/<%= it.topic.id %>/questions/add">Add Question</a>
+<% } %>

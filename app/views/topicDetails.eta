@@ -1,0 +1,25 @@
+<% layout('./layouts/layout.eta') %>
+
+<h1>Topic Details: <%= it.topic ? it.topic.name : 'Topic not found' %></h1>
+
+<% if (it.topic) { %>
+    <h2>Questions for this Topic</h2>
+    
+    <% if (it.questions && it.questions.length > 0) { %>
+        <ul>
+            <% it.questions.forEach(function(question) { %>
+                <li>
+                    <a href="/topics/<%= it.topic.id %>/questions/<%= question.id %>">
+                        <%= question.question_text || 'No text available' %>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No questions available for this topic.</p>
+    <% } %>
+
+    <a href="/topics/<%= it.topic.id %>/questions/add">Add Question</a>
+<% } else { %>
+    <p>No topic details available.</p>
+<% } %>

@@ -1,0 +1,48 @@
+<% layout('./layouts/layout.eta') %>
+
+<h1>Quiz Question</h1>
+
+<% if (it.question) { %>
+    <h2>Question: <%= it.question.question_text %></h2>
+    <p>Topic ID: <%= it.tId %></p>
+
+    <h3>Answer Options:</h3>
+    <form method="POST" action="/quiz/<%= it.tId %>/questions/<%= it.question.id %>/options">
+        <ul>
+            <% it.options.forEach(option => { %>
+                <li>
+                    <label>
+                        <input
+                            type="radio"
+                            name="optionId"
+                            value="<%= option.id %>"
+                            <%= option.id == it.selectedAnswer ? 'checked' : '' %>
+                        />
+                        <%= option.option_text %>
+                    </label>
+                </li>
+            <% }) %>
+        </ul>
+
+        <button type="submit">Submit Answer</button>
+    </form>
+<% } else { %>
+    <p>.</p>
+<% } %>
+
+<% if (it.errors && it.errors.length > 0) { %>
+    <div>
+        <h3 style="color: red;">Errors:</h3>
+        <ul>
+            <% it.errors.forEach(error => { %>
+                <li style="color: red;"><%= error %></li>
+            <% }) %>
+        </ul>
+    </div>
+<% } %>
+
+<% if (it.message) { %>
+    <div>
+        <h3 style="color: green;"><%= it.message %></h3>
+    </div>
+<% } %>

@@ -1,0 +1,26 @@
+<% layout('./layouts/layout.eta') %>
+
+<h1>Add a Question to <%= it.topic.name %></h1>
+
+<% if (it.errors && it.errors.length > 0) { %>
+    <ul>
+        <% it.errors.forEach(error => { %>
+            <li style="color: red;"><%= error %></li>
+        <% }) %>
+    </ul>
+<% } %>
+
+<form method="POST" action="/topics/<%= it.topic.id %>/questions">
+    <label for="question_text"><strong>Question Text:</strong></label>
+    <input type="text" id="question_text" name="question_text" required value="<%= it.questionText %>">
+    
+    <% it.answers.forEach((answer, index) => { %>
+        <label for="answer<%= index + 1 %>"><strong>Answer <%= index + 1 %>:</strong></label>
+        <input type="text" id="answer<%= index + 1 %>" name="answers[]" required value="<%= answer %>">
+    <% }); %>
+
+    <label for="correct_answer"><strong>Correct Answer (1-<%= it.answers.length %>):</strong></label>
+    <input type="number" name="correct_answer" min="1" max="<%= it.answers.length %>" required value="<%= it.correctAnswer %>">
+    
+    <button type="submit" class="btn btn-primary">Add Question</button>
+</form>
