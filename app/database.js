@@ -3,7 +3,7 @@ import { postgres } from "./deps.js";
 // Initialize the database connection with the environment variables
 const sql = postgres({
     host: Deno.env.get("PGHOST") || "localhost", // or "database-server" if inside Docker
-    port: Deno.env.get("PGPORT") || 5432, // Default PostgreSQL port
+    port:  Number(Deno.env.get("PGPORT")) || 5432, // Default PostgreSQL port
     username: Deno.env.get("PGUSER") || "quiz_app_v0_user", // Replace with your DB username
     password: Deno.env.get("PGPASSWORD") || "FjnJrwL7nG5uBfeVABggOfffGEFcMHhy", // Replace with your DB password
     db: Deno.env.get("PGDATABASE") || "quiz_app_v0", // Replace with your DB name
