@@ -17,7 +17,7 @@ app.use(errorMiddleware);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-const PORT = Number(Deno.env.get("PORT")) || 7777;
-console.log(`Server running on port ${PORT}`);
+//const PORT = Number(Deno.env.get("PORT")) || 7777;
+//console.log(`Server running on port ${PORT}`);
 
-app.listen({ port: PORT });
+app.listen({ port: 10000 });
