@@ -20,4 +20,4 @@ app.use(router.allowedMethods());
 //const PORT = Number(Deno.env.get("PORT")) || 7777;
 //console.log(`Server running on port ${PORT}`);
 
-app.listen({ port: 10000 });
+app.listen({ port: 7777 });
