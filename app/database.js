@@ -2,7 +2,8 @@ import { postgres } from "./deps.js";
 
 let sql;
 if (Deno.env.get("DATABASE_URL")) {
-  sql = postgres(Deno.env.get("DATABASE_URL"));
+  sql= postgres("postgresql://quiz_app_v0_user:FjnJrwL7nG5uBfeVABggOfffGEFcMHhy@dpg-cuf3d4l6l47c73fbnnh0-a/quiz_app_v0")
+  //sql = postgres(Deno.env.get("DATABASE_URL"));
 } else {
     sql = postgres({});
 }
