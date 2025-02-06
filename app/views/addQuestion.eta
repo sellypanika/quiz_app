@@ -15,7 +15,7 @@
     <input type="text" id="question_text" name="question_text" required value="<%= it.questionText %>">
     
     <% it.answers.forEach((answer, index) => { %>
-        <label for="answer<%= index %>"><strong>Answer <%= index  %>:</strong></label>
+        <label for="answer<%= index %>"><strong>Answer <%= index +1 %>:</strong></label>
         <input type="text" id="answer<%= index  %>" name="answers[]" required value="<%= answer %>">
     <% }); %>
 
