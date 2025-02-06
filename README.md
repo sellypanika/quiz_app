@@ -11,6 +11,8 @@ and once you submit the app will tell that if the answer is correct or not (with
 
 # Online deployment
 
+https://quiz-app-v0.onrender.com/
+
 
 
 
