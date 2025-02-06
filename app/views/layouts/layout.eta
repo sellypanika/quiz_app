@@ -12,7 +12,7 @@
     <a href="/quiz">Quiz</a>
   </nav>
  <div class="paper container">
-  <main>
+  <main style="padding:12px; margin:auto; max-width:600px">
     <%~ it.body %> <!-- This is where the specific page content goes -->
   </main>
 </div>
