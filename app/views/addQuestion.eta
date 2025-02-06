@@ -19,8 +19,8 @@
         <input type="text" id="answer<%= index  %>" name="answers[]" required value="<%= answer %>">
     <% }); %>
 
-    <label for="correct_answer"><strong>Correct Answer (1-<%= it.answers.length %>):</strong></label>
-    <input type="number" name="correct_answer" min="1" max="<%= it.answers.length %>" required value="<%= it.correctAnswer %>">
+    <label for="correct_answer"><strong>Correct Answer (<%= it.answers.length %>):</strong></label>
+    <input type="number" name="correct_answer" min="0" max="<%= it.answers.length %>" required value="<%= it.correctAnswer %>">
     
     <button type="submit" class="btn btn-primary">Add Question</button>
 </form>
