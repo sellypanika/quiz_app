@@ -5,7 +5,7 @@ const addTopic = async (userId, name) => {
     throw new Error("Both user ID and topic name are required");
   }
 
-  const userExists = await sql`SELECT 1 FROM users WHERE id = ${userId}`;
+  const userExists = await sql`SELECT 1 FROM users WHERE id = ${userId} AND admin= ${true}`;
   if (userExists.length === 0) {
     throw new Error(`User with ID ${userId} does not exist`);
   }
