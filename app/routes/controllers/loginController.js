@@ -10,16 +10,18 @@ const processLogin = async ({ request, response, state }) => {
   );
 
   if (userFromDatabase.length !== 1) {
-    response.redirect("/auth/login?error=invalid_credentials");
-    return;
+    return response.render("login.eta", {
+      errorMessage: "Invalid email or password. Please try again.",
+    });
   }
 
   const user = userFromDatabase[0];
   const passwordMatches = await compare(params.get("password"), user.password);
 
   if (!passwordMatches) {
-    response.redirect("/auth/login?error=invalid_credentials");
-    return;
+   return response.render("login.eta", {
+      errorMessage: "Invalid email or password. Please try again.",
+    });
   }
   //console.log("before session", user);
   await state.session.set("user", user);
