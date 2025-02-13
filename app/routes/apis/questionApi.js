@@ -106,14 +106,13 @@ const getUserAnswerApi = async ({ request, response }) => {
     response.body = { error: "Invalid question ID" };
     return;
   }
-  const correct = await quizService.checkAnswer(questionId, optionId);
-
-  if (correct) {
-    response.body = { correct };
-  } else {
-    response.status = 404;
-    response.body = { error: "User's answer not found" };
+   if (isNaN(optionId)) {
+    response.status = 400;
+    response.body = { error: "Invalid optionId" };
+    return;
   }
+  const correct = await quizService.checkAnswer(questionId, optionId);
+  response.body = {correct};
 };
 
 
