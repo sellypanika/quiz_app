@@ -13,11 +13,7 @@ const registerUser = async ({ request, response }) => {
         response.body = "Email and Password are required.";
         return;
     }
-    if (password.length < 4) {
-    await state.session.set("errorMessage", "Password must be at least 4 characters long.");
-    response.redirect("/register"); 
-    return;
-
+    
     const hashedPassword = await hash(password);
 
     await userService.addUser(email, hashedPassword);
