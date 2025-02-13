@@ -16,7 +16,7 @@ const getRandomQuestionApi = async ({ params, response }) => {
     );
     response.body = {
       questionId: question.id,
-      questionText: question.text,
+      questionText: question.question_text,
       answerOptions: answerOptions.map((option) => ({
         optionId: option.id,
         optionText: option.option_text,
