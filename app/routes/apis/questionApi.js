@@ -44,7 +44,7 @@ const getQuestionByIdApi = async ({ params, response }) => {
     );
     response.body = {
       questionId: question.id,
-      questionText: question.text,
+      questionText: question.question_text,
       answerOptions: answerOptions.map((option) => ({
         optionId: option.id,
         optionText: option.option_text,
@@ -101,16 +101,12 @@ const getCorrectAnswerApi = async ({ params, response }) => {
 const getUserAnswerApi = async ({ request, response }) => {
   const { questionId, optionId } = await request.body().value;
 
-  if (isNaN(questionId)) {
+   if (isNaN(questionId) || isNaN(optionId)) {
     response.status = 400;
     response.body = { error: "Invalid question ID" };
     return;
   }
-   if (isNaN(optionId)) {
-    response.status = 400;
-    response.body = { error: "Invalid optionId" };
-    return;
-  }
+   
   const correct = await quizService.checkAnswer(questionId, optionId);
   response.body = {correct};
 };
