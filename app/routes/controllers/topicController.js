@@ -59,10 +59,10 @@ const deleteTopic = async ({ params, response, state }) => {
     response.redirect("/login");
     return;
   }
-
+ const userId = user.id; 
   const topicId = params.id;
   try {
-    await topicService.deleteTopic(topicId);
+    await topicService.deleteTopic(userId,topicId);
     response.redirect("/topics");
   } catch (error) {
     response.status = 500;
