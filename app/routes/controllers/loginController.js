@@ -10,8 +10,9 @@ const processLogin = async ({ request, response, state }) => {
   );
 
   if (userFromDatabase.length !== 1) {
-    return response.render("login.eta", {
+    return render("login.eta", {
       errorMessage: "Invalid email or password. Please try again.",
+      response: response,
     });
   }
 
@@ -19,8 +20,9 @@ const processLogin = async ({ request, response, state }) => {
   const passwordMatches = await compare(params.get("password"), user.password);
 
   if (!passwordMatches) {
-   return response.render("login.eta", {
+ return render("login.eta", {
       errorMessage: "Invalid email or password. Please try again.",
+      response: response,
     });
   }
   //console.log("before session", user);
