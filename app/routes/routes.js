@@ -77,9 +77,6 @@ router.get(
 );
 
 // Route to get the user's answer for a question
-router.get(
-  "/api/users/:userId/questions/:questionId/answer",
-  questionApi.getUserAnswerApi
-);
+router.post("/api/questions/answer", questionApi.getUserAnswerApi);
 
 export { router };
