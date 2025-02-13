@@ -20,8 +20,9 @@ GET quiz-app-v0.onrender.com/api/questions/random/1
 GET quiz-app-v0.onrender.com/api/questions/random/2
 
 POST quiz-app-v0.onrender.com/api/questions/answer
+
 [Example that can be used - {
-*  "questionId": 1,
+  *  "questionId": 1,
   "optionId": 6
 } - response {
     "correct": true
