@@ -13,6 +13,11 @@ const registerUser = async ({ request, response }) => {
         response.body = "Email and Password are required.";
         return;
     }
+    if (password.length < 4) {
+        response.status = 400;
+        response.body = "Password must be at least 4 characters long.";
+        return;
+    }
 
     const hashedPassword = await hash(password);
 
