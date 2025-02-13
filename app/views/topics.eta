@@ -12,10 +12,12 @@
                 <a href="/topics/<%= topic.id %>"><strong><%= topic.name %></strong></a> 
                 (added by: <%= topic.email %>)
 
-                <!-- Always show delete button -->
+                <!-- delete button for admin -->
+                <% if (it.user && it.user.isAdmin) { %>
                 <form method="POST" action="/topics/<%= topic.id %>/delete" style="display:inline;">
                     <button type="submit">Delete</button>
                 </form>
+                <% } %>
             </li>
         <% } %>
     </ul>
@@ -41,7 +43,7 @@
     <button type="submit">Add Topic</button>
 </form>
 
-<% if (it.topic && it.questions) { %> <!-- Ensure the topic and questions are passed correctly -->
+<% if (it.topic && it.topic.id && it.questions) { %> <!-- Ensure the topic and questions are passed correctly -->
     <h1><%= it.topic.name %></h1>
 
     <% if (it.questions.length > 0) { %>
