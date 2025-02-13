@@ -4,8 +4,7 @@ Quiz app
 
 # Description
 
-This is a quiz App on different topics. Once you are registered you can log in and see the available topics, 
-add new topic or delete them. You can also add specific question with answer options for a particular topic. 
+This is a quiz App on different topics. Once you are registered you can log in and see the available topics. Only Admin can add new topic or delete them. You can also add specific question with answer options for a particular topic. 
 You can also go to a particular topic and play quiz where you can select correct answer from given options
 and once you submit the app will tell that if the answer is correct or not (with correct answer).
 
@@ -27,8 +26,6 @@ POST quiz-app-v0.onrender.com/api/questions/answer
 } - response {
     "correct": true
 }]
-
-
 
 
 # Walking skeleton
