@@ -26,19 +26,17 @@ const deleteTopic = async (userId, topicId) => {
   if (!userId || !topicId) {
     throw new Error("User ID and topic ID are required");
   }
-// Check if user exists and is an admin
-  const userResult = await sql`SELECT 1 FROM users WHERE id = ${userId} AND admin= true`;
+
+  // Check if user exists and is an admin
+  const userResult = await sql`SELECT 1 FROM users WHERE id = ${userId} AND admin = true`;
 
   if (userResult.length === 0) {
-    throw new Error("User not found");
-  }
-
-  if (!isAdmin) {
     throw new Error("Only admin can add/delete topics");
   }
+
+  // Proceed with deleting the topic
   await sql`DELETE FROM topics WHERE id = ${topicId}`;
 };
-  
 
 const getTopicById = async (id) => {
   try {
