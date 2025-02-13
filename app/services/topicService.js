@@ -5,7 +5,7 @@ const addTopic = async (userId, name) => {
     throw new Error("Both user ID and topic name are required");
   }
 
-  const userExists = await sql`SELECT 1 FROM users WHERE id = ${userId} AND admin= ${true}`;
+  const userExists = await sql`SELECT 1 FROM users WHERE id = ${userId} AND admin= true`;
   if (userExists.length === 0) {
     throw new Error(`Only admin can add/ delete topic`);
   }
@@ -22,12 +22,17 @@ const listTopics = async () => {
     `;
 };
 
-const deleteTopic = async (topicId) => {
-  const topicExists = await sql`SELECT 1 FROM topics WHERE id = ${topicId} AND admin= ${true}`;
-  if (topicExists.length === 0) {
-    throw new Error(`Only admin can add/ delete topic`);
+const deleteTopic = async (userId, topicId) => {
+  if (!userId || !topicId) {
+    throw new Error("User ID and topic ID are required");
   }
 
+  const userExists = await sql`SELECT 1 FROM users WHERE id = ${userId} AND admin = true`;
+  if (userExists.length === 0) {
+    throw new Error("Only admin can add/delete topics");
+  }
+
+  
   await sql`DELETE FROM topics WHERE id = ${topicId}`;
 };
 
