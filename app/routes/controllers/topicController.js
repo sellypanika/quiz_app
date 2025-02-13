@@ -67,6 +67,7 @@ const deleteTopic = async ({ params, response, state }) => {
   } catch (error) {
     response.status = 500;
     response.body = `Error deleting topic: ${error.message}`;
+    response.redirect("/topics?error=Only+admin+can+delete+topics");
   }
 };
 
