@@ -13,11 +13,11 @@
                 (added by: <%= topic.email %>)
 
                 <!-- delete button for admin -->
-                <% if (it.user && it.user.isAdmin) { %>
+              
                 <form method="POST" action="/topics/<%= topic.id %>/delete" style="display:inline;">
                     <button type="submit">Delete</button>
                 </form>
-                <% } %>
+             
             </li>
         <% } %>
     </ul>
