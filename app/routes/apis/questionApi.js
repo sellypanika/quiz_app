@@ -98,23 +98,24 @@ const getCorrectAnswerApi = async ({ params, response }) => {
   }
 };
 
-const getUserAnswerApi = async ({ params, response }) => {
-  const { userId, questionId } = params;
+const getUserAnswerApi = async ({ request, response }) => {
+  const { questionId, optionId } = await request.body().value;
+
   if (isNaN(questionId)) {
     response.status = 400;
     response.body = { error: "Invalid question ID" };
     return;
   }
+  const correct = await quizService.checkAnswer(questionId, optionId);
 
-  const userAnswer = await quizService.getUserAnswer(userId, questionId);
-
-  if (userAnswer) {
-    response.body = { userAnswer };
+  if (correct) {
+    response.body = { correct };
   } else {
     response.status = 404;
     response.body = { error: "User's answer not found" };
   }
 };
+
 
 export {
   checkAnswerApi,
