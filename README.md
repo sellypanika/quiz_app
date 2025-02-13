@@ -13,6 +13,11 @@ and once you submit the app will tell that if the answer is correct or not (with
 
 https://quiz-app-v0.onrender.com/
 
+#API
+
+GET quiz-app-v0.onrender.com/api/questions/random/1
+GET quiz-app-v0.onrender.com/api/questions/random/2
+
 
 
 
